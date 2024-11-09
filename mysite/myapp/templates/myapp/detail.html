@@ -1,12 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Book Details</title>
-</head>
-<body>
-    {{book.name}} <br>
-    {{book.description}} <br>
-    ${{book.price}}
-</body>
-</html>
+{% extends 'myapp/base.html' %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{book.bookimage.url}}" width="300" height="500">
+        </div>
+        <div class="col-md-6">
+            <h2>{{book.name}}</h2>
+
+            <h4>{{book.description}}</h4>
+
+            <h6>Cost: ${{book.price}}</h6>
+
+            <a href="{% url 'myapp:update' book.id %}">
+                <button class="btn btn-warning">Edit Book</button>
+            </a>
+            <a href="{% url 'myapp:delete' book.id %}">
+                <button class="btn btn-danger">Delete Book</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

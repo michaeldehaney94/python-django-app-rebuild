@@ -1,0 +1,12 @@
+{% extends 'myapp/base.html' %}
+
+{% block body %}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<!--    The form from the add book form will render here -->
+    {{ form.as_p }}
+    <input type="submit" value="Add Book" class="btn btn-primary">
+</form>
+
+{% endblock %}

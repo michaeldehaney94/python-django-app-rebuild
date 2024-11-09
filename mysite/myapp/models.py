@@ -11,3 +11,4 @@ class Book(models.Model):
     name = models.CharField(max_length=100)  # book name
     description = models.CharField(max_length=300)  # book description
     price = models.IntegerField()
+    bookimage = models.ImageField(default='default.jpg', upload_to='book_images/')  # store book cover image

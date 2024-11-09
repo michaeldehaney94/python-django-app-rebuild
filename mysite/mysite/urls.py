@@ -15,11 +15,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from myapp import views
+from . import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('index/', views.index, name='index'),
-    path('book/<int:book_id>/', views.detail,name='detail'),
-]
+                  path('admin/', admin.site.urls),
+                  path('', include('myapp.urls')),  # include URL handlers from another url file
+
+                  # path('index/', views.index, name='index'),
+                  # path('book/<int:book_id>/', views.detail,name='detail'),
+              ] + static(settings.MEDIA_URL,
+                         document_root=settings.MEDIA_ROOT)  # create url path to access image upload folder
