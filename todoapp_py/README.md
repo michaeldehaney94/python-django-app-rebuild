@@ -11,6 +11,5 @@
 9. Run migrations - py manage.py migrate<br/><br/>
 10. Create superuser for django admin - py manage.py createsuperuser<br/><br/>
 11. Run server - py manage.py runserver<br/><br/>
-12. To create a model form to reduce recreating a form, create 'forms.py' in the myapp folder. Import 'from .models import Task' <br/>and 'from django import forms' in forms.py. Then create a view in view.py for updating data.
-<br/>
-To run Django in localhost, open terminal and run "py manage.py runserver"
+12. To create a model form to reduce recreating a form, create 'forms.py' in the myapp folder. Import 'from .models import Task' <br/>and 'from django import forms' in forms.py. Then create a view in view.py for updating data.<br/>
+13. To run Django in localhost, open terminal and run "py manage.py runserver"
