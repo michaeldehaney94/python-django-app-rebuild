@@ -1,0 +1,60 @@
+{% extends 'myapp/base.html' %}
+
+{% block body %}
+
+    <div class="container-fliud">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="banner">
+                    <div class="banner-text text-center text-white">
+                        <h1>Todo</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Add Task</h4>
+                <form method="post" class="shadow p-3">
+                    {%csrf_token%}
+                    <div class="form-group pb-2">
+                        <input type="text" name="name" id="name" placeholder="Enter task" class="form-control">
+                    </div>
+                    <div class="form-group pb-2">
+                        <input type="text" name="priority" id="priority" placeholder="Enter task priority" class="form-control">
+                    </div>
+                    <div class="form-group pb-2">
+                        <input type="date" name="date" id="date" class="form-control">
+                    </div>
+
+                    <input type="submit" value="Add Task" class="btn btn-success btn-sm">
+                </form>
+            </div>
+
+            <div class="col-md-6">
+                <h4>Tasks to be completed</h4>
+                {% for task in task_list %}
+                <div class="shadow card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{task.name}}</h5>
+                        <p><b><span class="badge text-bg-warning">{{task.priority}}</span></b></p>
+                        <p><b>{{task.date}}</b></p>
+                        <a class="btn btn-danger btn-sm" href="{% url 'delete' task.id %}">
+                            Done
+                        </a>
+                        <a class="btn btn-warning btn-sm" href="{% url 'update' task.id %}">
+                            Edit
+                        </a>
+                    </div>
+                </div>
+                <br/>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

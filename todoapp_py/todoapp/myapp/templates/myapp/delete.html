@@ -1,0 +1,15 @@
+{% extends 'myapp/base.html' %}
+
+{% block body %}
+
+<form  method="post">
+    {% csrf_token %}
+    <h3>Are you sure this task is completed?</h3>
+    <input type="submit" value="Confirm" class="btn btn-danger btn-sm">
+    <a href="{% url 'index' %}" class="btn btn-warning btn-sm">
+        <img width="20" height="20" src="https://img.icons8.com/ios-glyphs/30/undo.png" alt="undo"/>
+        Go back
+    </a>
+</form>
+
+{% endblock %}
